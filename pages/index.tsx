@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
 
 
-const Home: NextPage = () => {
+const App: NextPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   if (status === 'loading') return null;
@@ -20,4 +20,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default App
