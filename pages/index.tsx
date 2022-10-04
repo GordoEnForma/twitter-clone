@@ -1,10 +1,21 @@
 import type { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router';
 
 
 const Home: NextPage = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  if (status === 'loading') return null;
+
+  if (session) {
+    router.push('/home');
+    
+  }
+
   return (
     <div className={"text-teal-600 text-3xl"}>
-        <h1>Twitter Clone !!!! </h1>
+      <a href='/api/auth/signin'>Sign In !!!! </a>
     </div>
   )
 }
