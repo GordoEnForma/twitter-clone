@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react"
 import { FormEvent, useState } from "react";
 
 
-const NewTweet: React.FC = () => {
+export const NewTweet: React.FC = () => {
     const { data: session } = useSession();
     const [content, setContent] = useState<string>();
 
@@ -31,7 +31,7 @@ const NewTweet: React.FC = () => {
                 'Content-type': 'application/json',
             },
             method: 'POST',
-        }).then();
+        });
     }
 
     return (
@@ -52,7 +52,7 @@ const NewTweet: React.FC = () => {
 
             <div className='flex'>
                 <div className='flex-1 mb-5'>
-                    <button className='border float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full'>
+                    <button type="submit" className='border float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full'>
                         Tweet
                     </button>
                 </div>
@@ -61,4 +61,3 @@ const NewTweet: React.FC = () => {
     )
 }
 
-export default NewTweet
